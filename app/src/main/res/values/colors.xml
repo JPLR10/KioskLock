@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BlackBox7 brand colours (sampled from the logo) -->
+    <color name="bb_black">#000000</color>
+    <color name="bb_teal">#00716B</color>
+    <color name="bb_red">#E10916</color>
+    <color name="bb_ring">#9FD3CC</color>
+    <color name="bb_white">#FFFFFF</color>
+    <color name="bb_ink">#1A1A1A</color>
+    <color name="bb_muted">#5F6B6A</color>
+</resources>

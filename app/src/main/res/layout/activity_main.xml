@@ -1,42 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- BlackBox7 kiosk home screen: logo background, clock, app dock at the bottom -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F4F6"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/bb_white">
 
-    <!-- Long-press this title to open the admin screen -->
-    <TextView
-        android:id="@+id/title"
+    <!-- Full BlackBox7 logo as the background (white edges blend with the screen) -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="12dp"
-        android:text="@string/app_name"
-        android:textColor="#111827"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/bg_home" />
 
+    <!-- Small stacked logo, top-left. Long-press it to open the admin screen. -->
+    <ImageView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="24dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo_stacked" />
+
+    <!-- Clock and date, top-right -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="24dp"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:format12Hour="HH:mm"
+            android:format24Hour="HH:mm"
+            android:includeFontPadding="false"
+            android:textColor="@color/bb_black"
+            android:textSize="44sp" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:format12Hour="EEEE, d MMMM"
+            android:format24Hour="EEEE, d MMMM"
+            android:textColor="@color/bb_teal"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Setup / maintenance notice (hidden while the kiosk is locked) -->
     <TextView
         android:id="@+id/status"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="#FEF3C7"
-        android:padding="12dp"
-        android:textColor="#92400E"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/status_pill"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:maxWidth="560dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/bb_white"
         android:textSize="14sp"
         android:visibility="gone" />
 
-    <GridView
-        android:id="@+id/grid"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:columnWidth="96dp"
-        android:gravity="center"
-        android:horizontalSpacing="8dp"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="16dp" />
-</LinearLayout>
+    <!-- App dock: scrolls sideways if there are more apps than fit -->
+    <HorizontalScrollView
+        android:id="@+id/dock_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/dock_bg"
+        android:elevation="14dp"
+        android:fillViewport="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/dock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp" />
+    </HorizontalScrollView>
+</FrameLayout>

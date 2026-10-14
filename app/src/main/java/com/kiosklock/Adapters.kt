@@ -9,21 +9,6 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 
-/** Icon grid on the kiosk home screen. */
-class AppGridAdapter(private val c: Context, private val apps: List<AppEntry>) : BaseAdapter() {
-    override fun getCount() = apps.size
-    override fun getItem(position: Int) = apps[position]
-    override fun getItemId(position: Int) = position.toLong()
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val v = convertView ?: LayoutInflater.from(c).inflate(R.layout.item_app, parent, false)
-        val app = apps[position]
-        v.findViewById<ImageView>(R.id.icon).setImageDrawable(app.icon)
-        v.findViewById<TextView>(R.id.label).text = app.label
-        return v
-    }
-}
-
 /** Tick-list of apps on the admin screen. */
 class AppCheckAdapter(
     private val c: Context,

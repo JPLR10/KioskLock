@@ -3,38 +3,36 @@ package com.kiosklock
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.GridView
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 
 /**
- * The kiosk home screen. Shows only the approved apps.
- * Long-press the title to open the PIN-protected admin screen.
+ * The BlackBox7 kiosk home screen. Shows only the approved apps in a dock.
+ * Long-press the small logo (top-left) to open the PIN-protected admin screen.
  */
 class MainActivity : Activity() {
 
-    private lateinit var grid: GridView
+    private lateinit var dock: LinearLayout
+    private lateinit var dockCard: View
     private lateinit var status: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        grid = findViewById(R.id.grid)
+        dock = findViewById(R.id.dock)
+        dockCard = findViewById(R.id.dock_card)
         status = findViewById(R.id.status)
 
         findViewById<View>(R.id.title).setOnLongClickListener { openAdmin(); true }
-
-        grid.setOnItemClickListener { _, _, position, _ ->
-            val app = grid.adapter.getItem(position) as AppEntry
-            val launch = packageManager.getLaunchIntentForPackage(app.pkg)
-            if (launch != null) startActivity(launch)
-        }
     }
 
     override fun onResume() {
         super.onResume()
-        grid.adapter = AppGridAdapter(this, AppEntry.of(this, Prefs.allowed(this)))
+        showApps()
 
         val owner = KioskPolicy.isDeviceOwner(this)
         val msg = when {
@@ -52,6 +50,23 @@ class MainActivity : Activity() {
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    /** Fill the dock with one tile per allowed app. */
+    private fun showApps() {
+        dock.removeAllViews()
+        val apps = AppEntry.of(this, Prefs.allowed(this))
+        dockCard.visibility = if (apps.isEmpty()) View.GONE else View.VISIBLE
+        val inflater = LayoutInflater.from(this)
+        for (app in apps) {
+            val tile = inflater.inflate(R.layout.item_app, dock, false)
+            tile.findViewById<ImageView>(R.id.icon).setImageDrawable(app.icon)
+            tile.findViewById<TextView>(R.id.label).text = app.label
+            tile.setOnClickListener {
+                packageManager.getLaunchIntentForPackage(app.pkg)?.let { startActivity(it) }
+            }
+            dock.addView(tile)
         }
     }
 

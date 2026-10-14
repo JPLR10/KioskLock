@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KioskLock</string>
+    <string name="app_name">BlackBox7 Kiosk</string>
     <string name="admin_title">Kiosk admin</string>
 
-    <string name="status_not_owner">Not set up as device owner yet. Follow the setup steps in README.md (adb dpm set-device-owner). Long-press the title to open admin.</string>
-    <string name="status_off">Kiosk mode is off. Long-press the title to open admin.</string>
+    <string name="status_not_owner">Not set up yet – factory reset and scan the setup QR code. Long-press the logo for admin.</string>
+    <string name="status_off">Maintenance mode – long-press the logo to lock again.</string>
     <string name="status_off_admin">Kiosk mode is OFF. Tick the allowed apps, then tap Save &amp; lock.</string>
     <string name="status_on">Kiosk mode is ON · %1$d app(s) allowed</string>
 

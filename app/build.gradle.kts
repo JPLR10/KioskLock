@@ -11,8 +11,10 @@ android {
         applicationId = "com.kiosklock"
         minSdk = 28          // Android 9+ (needed for lock-task feature controls)
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        // Each GitHub build gets a higher number, so tablets accept it as an update.
+        val build = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
+        versionCode = build
+        versionName = "1.$build"
     }
 
     buildTypes {
