@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KioskLock</string>
+    <string name="admin_title">Kiosk admin</string>
+
+    <string name="status_not_owner">Not set up as device owner yet. Follow the setup steps in README.md (adb dpm set-device-owner). Long-press the title to open admin.</string>
+    <string name="status_off">Kiosk mode is off. Long-press the title to open admin.</string>
+    <string name="status_off_admin">Kiosk mode is OFF. Tick the allowed apps, then tap Save &amp; lock.</string>
+    <string name="status_on">Kiosk mode is ON · %1$d app(s) allowed</string>
+
+    <string name="save_and_lock">Save &amp; lock</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="exit_kiosk">Exit kiosk</string>
+    <string name="remove_owner">Remove owner</string>
+    <string name="pick_apps">Tap apps to allow them:</string>
+
+    <string name="pin_hint">PIN (4+ digits)</string>
+    <string name="enter_pin">Enter admin PIN</string>
+    <string name="new_pin">Set a new admin PIN</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="pin_too_short">PIN must be at least 4 digits</string>
+    <string name="pin_mismatch">PINs didn\'t match – try again</string>
+    <string name="pin_saved">PIN saved</string>
+    <string name="wrong_pin">Wrong PIN</string>
+    <string name="locked_out">Too many wrong tries. Wait %1$d s.</string>
+
+    <string name="kiosk_started">Kiosk mode on</string>
+    <string name="kiosk_stopped">Kiosk mode off – device unlocked for maintenance. Tap Save &amp; lock when done.</string>
+
+    <string name="remove_owner_title">Remove device owner?</string>
+    <string name="remove_owner_msg">This turns off all lockdown permanently. To lock the device again you\'ll need to factory reset and repeat setup.</string>
+    <string name="remove">Remove</string>
+    <string name="owner_removed">Device owner removed. You can now uninstall KioskLock.</string>
+</resources>
