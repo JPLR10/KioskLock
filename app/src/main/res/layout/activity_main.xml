@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BlackBox7 kiosk home screen: logo background, clock, app dock at the bottom -->
+<!-- BlackBox7 kiosk home screen: logo background, clock + status, app dock at the bottom -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,7 +24,7 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/logo_stacked" />
 
-    <!-- Clock and date, top-right -->
+    <!-- Clock, date and device status, top-right -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +51,76 @@
             android:format24Hour="EEEE, d MMMM"
             android:textColor="@color/bb_teal"
             android:textSize="16sp" />
+
+        <!-- Battery, Wi-Fi and mobile data (filled in by StatusPanel.kt) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/label_battery"
+                android:textColor="@color/bb_muted"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/status_off"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/label_wifi"
+                android:textColor="@color/bb_muted"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/status_off"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/label_data"
+                android:textColor="@color/bb_muted"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/status_off"
+                android:textSize="13sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Setup / maintenance notice (hidden while the kiosk is locked) -->

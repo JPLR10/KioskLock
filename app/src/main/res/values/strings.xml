@@ -31,4 +31,30 @@
     <string name="remove_owner_msg">This turns off all lockdown permanently. To lock the device again you\'ll need to factory reset and repeat setup.</string>
     <string name="remove">Remove</string>
     <string name="owner_removed">Device owner removed. You can now uninstall KioskLock.</string>
+
+    <!-- Status panel -->
+    <string name="label_battery">Battery</string>
+    <string name="label_wifi">Wi-Fi</string>
+    <string name="label_data">Mobile data</string>
+    <string name="unknown">Unknown</string>
+
+    <string name="bat_line">%1$d%% · %2$s</string>
+    <string name="bat_charging">Charging</string>
+    <string name="bat_charging_from">Charging (%1$s)</string>
+    <string name="bat_full">Full</string>
+    <string name="bat_plugged">Plugged in, not charging</string>
+    <string name="bat_on_battery">On battery</string>
+    <string name="bat_hot">" · overheating"</string>
+    <string name="src_ac">mains</string>
+    <string name="src_usb">USB</string>
+    <string name="src_wireless">wireless</string>
+
+    <string name="net_unavailable">Not available</string>
+    <string name="net_off">Off</string>
+    <string name="net_connected">Connected · signal %1$d/4</string>
+    <string name="net_no_internet">Connected, no internet · signal %1$d/4</string>
+    <string name="wifi_not_connected">On · not connected</string>
+    <string name="data_no_sim">No SIM</string>
+    <string name="data_standby">On · standby (using Wi-Fi)</string>
+    <string name="data_no_signal">On · no signal</string>
 </resources>

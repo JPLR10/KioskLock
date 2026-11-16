@@ -8,4 +8,10 @@
     <color name="bb_white">#FFFFFF</color>
     <color name="bb_ink">#1A1A1A</color>
     <color name="bb_muted">#5F6B6A</color>
+
+    <!-- Status panel -->
+    <color name="status_good">#00716B</color>
+    <color name="status_warn">#B45309</color>
+    <color name="status_bad">#E10916</color>
+    <color name="status_off">#5F6B6A</color>
 </resources>

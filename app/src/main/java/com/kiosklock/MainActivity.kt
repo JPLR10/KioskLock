@@ -11,7 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 
 /**
- * The BlackBox7 kiosk home screen. Shows only the approved apps in a dock.
+ * The BlackBox7 kiosk home screen. Shows the clock, battery / Wi-Fi / mobile data status
+ * and only the approved apps in a dock.
  * Long-press the small logo (top-left) to open the PIN-protected admin screen.
  */
 class MainActivity : Activity() {
@@ -19,6 +20,7 @@ class MainActivity : Activity() {
     private lateinit var dock: LinearLayout
     private lateinit var dockCard: View
     private lateinit var status: TextView
+    private lateinit var statusPanel: StatusPanel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +28,14 @@ class MainActivity : Activity() {
         dock = findViewById(R.id.dock)
         dockCard = findViewById(R.id.dock_card)
         status = findViewById(R.id.status)
+        statusPanel = StatusPanel(this)
 
         findViewById<View>(R.id.title).setOnLongClickListener { openAdmin(); true }
     }
 
     override fun onResume() {
         super.onResume()
+        statusPanel.start()
         showApps()
 
         val owner = KioskPolicy.isDeviceOwner(this)
@@ -51,6 +55,11 @@ class MainActivity : Activity() {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onPause() {
+        statusPanel.stop() // no point updating while an app is open on top
+        super.onPause()
     }
 
     /** Fill the dock with one tile per allowed app. */

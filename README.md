@@ -61,6 +61,20 @@ This survives reboots.
 
 5 wrong PIN attempts lock the admin screen for 60 seconds.
 
+## Status panel on the kiosk screen
+
+The normal Android status bar is hidden in kiosk mode, so the top-right of the kiosk screen shows,
+under the clock and date:
+
+| Item | What it shows |
+|---|---|
+| Battery | % charge and state: Charging (mains/USB/wireless), Full, On battery, Plugged in not charging. Amber at 30 % or below, red at 15 % or below, red if the battery overheats |
+| Wi-Fi | Off · On, not connected · Connected with signal 0–4 · Connected, no internet |
+| Mobile data | Not available (no cellular) · No SIM · Off · On, standby (Wi-Fi in use) · Connected with signal 0–4 · On, no signal |
+
+Teal = good, amber = check it, red = needs attention, grey = off. Battery and connection changes
+show instantly; signal strength refreshes every 5 seconds.
+
 ## What's locked while the kiosk is on
 
 - Only approved apps can run (Settings, Play Store, browser etc. are blocked unless you tick them)
@@ -89,6 +103,7 @@ This survives reboots.
 ```
 app/src/main/java/com/kiosklock/
   MainActivity.kt        kiosk home screen (launcher), enters lock-task mode
+  StatusPanel.kt         battery, Wi-Fi and mobile data status on the kiosk screen
   AdminActivity.kt       PIN-protected admin: allowed apps, exit, change PIN, remove owner
   KioskPolicy.kt         all device-owner lockdown rules – edit RESTRICTIONS here
   Prefs.kt               allowed apps + salted/hashed PIN + lockout
