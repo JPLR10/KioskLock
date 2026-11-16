@@ -105,8 +105,8 @@ class StatusPanel(private val a: Activity) {
             BatteryManager.BATTERY_PLUGGED_WIRELESS -> a.getString(R.string.src_wireless)
             else -> null
         }
-        val charging = status == BatteryManager.STATUS_CHARGING
-        val full = status == BatteryManager.STATUS_FULL
+        val charging = status == BatteryManager.BATTERY_STATUS_CHARGING
+        val full = status == BatteryManager.BATTERY_STATUS_FULL
         var state = when {
             charging && source != null -> a.getString(R.string.bat_charging_from, source)
             charging -> a.getString(R.string.bat_charging)
